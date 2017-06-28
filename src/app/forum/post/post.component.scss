@@ -1,0 +1,83 @@
+@import "../../../assets/sass/vars";
+
+.post:nth-of-type(odd){
+    .post__picture {
+        float: right;
+    }
+}
+
+.post__content {
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid $light-grey;
+    border-top: 1px solid $light-grey;
+    display: flex;
+}
+
+.post__picture {
+    background-position: center;
+    background-size: cover;
+}
+
+.post__info {
+    padding: 1rem;
+}
+
+.post__profil__picture {
+    float: left;
+    margin-right: 0.5rem;
+}
+
+.post__profil__name, .post__date {
+    line-height: 20px;
+}
+
+.post__date {
+    color: $grey;
+    font-size: 0.8rem;
+}
+
+.post__resume {
+    margin: 1rem 0;
+}
+
+.post__actions {
+    height: 50px;
+}
+
+.post__action__comment {
+    width: calc(100% - 60px);
+    float: left;
+
+    form {
+        textarea {
+            height: 50px;
+            width: calc(100% - 30px);
+            float: left;
+            resize: none;
+        }
+
+        button {
+            background: transparent;
+            line-height: 48px;
+            width: 30px;
+            float: left;
+            padding-top: 2px;
+            color: $tertiary-color;
+            cursor: pointer;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+.post__action__like {
+    width: 60px;
+    float: left;
+}
+
+#error {
+    padding: 1rem;
+}

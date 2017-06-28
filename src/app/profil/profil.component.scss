@@ -1,0 +1,74 @@
+@import "../../assets/sass/vars";
+
+.profil__information {
+    z-index             : 0;
+    position            : relative;
+    padding             : 2rem 1rem;
+    color               : white;
+    background-color    : $primary-color;
+    background-position : top;
+    background-size     : cover;
+    text-align          : center;
+
+    &::after {
+        z-index    : -1;
+        content    : '';
+        position   : absolute;
+        top        : 0;
+        left       : 0;
+        width      : 100%;
+        height     : 100%;
+        background : linear-gradient(
+        to top,
+        rgba($black, 0.7) 0%,
+        rgba($black, 0.5) 35%,
+        transparent 50%,
+        transparent 100%
+        );
+    }
+}
+
+.profil__follow {
+    position       : absolute;
+    top            : 2rem;
+    right          : 2rem;
+    padding        : 0.5rem 1rem;
+    color          : $primary-color;
+    border-radius  : 15px;
+    background     : white;
+    box-shadow     : $box-shadow;
+    text-transform : uppercase;
+    font-size      : 0.8rem;
+    font-weight    : normal;
+    cursor         : pointer;
+}
+
+.profil__picture {
+    width      : 100px;
+    height     : 100px;
+    margin     : 0 auto 1rem;
+    box-shadow : $box-shadow;
+}
+
+.profil__name {
+    text-transform : uppercase;
+    font-size      : 1.2rem;
+}
+
+.profil__tag {
+    padding : 1rem 0;
+    color   : white;
+}
+
+.profil__stats {
+    width  : 150px;
+    margin : auto;
+
+    div {
+        text-align : center;
+    }
+}
+
+.profil__description {
+    padding : 1rem;
+}

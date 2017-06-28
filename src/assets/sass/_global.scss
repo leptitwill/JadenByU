@@ -1,0 +1,61 @@
+body {
+	display         : flex;
+	min-height      : 100vh;
+	background      : $black;
+	align-items     : center;
+	justify-content : center;
+}
+
+main {
+	width          : 100%;
+	max-width      : 450px;
+	min-height     : 100vh;
+	padding-bottom : 55px;
+	background     : white;
+}
+
+input:-webkit-autofill {
+	-webkit-box-shadow : 0 0 0 30px white inset;
+}
+
+.tab a {
+	color      : white !important;
+	background : $tertiary-color;
+
+	&.active,
+	&:hover {
+		background : $primary-color !important;
+	}
+}
+
+.indicator {
+	background : $primary-color !important;
+}
+
+.profil_picture {
+	width               : 40px;
+	height              : 40px;
+	border-radius       : 50%;
+	background-position : center;
+	background-size     : 100%;
+}
+
+.tag {
+	display        : inline-block;
+	margin-right   : 0.5rem;
+	color          : $primary-color;
+	text-transform : uppercase;
+	font-size      : 0.9rem;
+
+	&::before {
+		content : '#';
+	}
+}
+
+.block {
+	padding: 2rem 1rem;
+}
+
+.center {
+	text-align: center;
+}

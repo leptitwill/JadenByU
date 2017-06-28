@@ -1,0 +1,27 @@
+<ul class="row tabs">
+	<li class="tab col s4"><a href="#forum">Forum</a></li>
+	<li class="tab col s4"><a href="#hot" class="active">Hot</a></li>
+	<li class="tab col s4"><a href="#blog">Blog</a></li>
+</ul>
+
+<section id="forum">
+
+</section>
+
+<section id="hot">
+	<section class="row comment">
+	    <div class="col s12">
+	        <h2 class="comment__intro">Hello {{o_user.username}} ! Quoi de neuf ?</h2>
+	    </div>
+	    <form class="comment__form">
+	        <textarea name="comment__text" placeholder="Exprimez-vous ici !"></textarea>
+	        <button type="submit" class="comment__form__button"><i class="fa fa-send-o"></i></button>
+	        <button type="button" class="comment__attachment"><i class="fa fa-picture-o"></i></button>
+	    </form>
+	</section>
+	<post></post>
+</section>
+
+<section id="blog">
+	<p>blog</p>
+</section>

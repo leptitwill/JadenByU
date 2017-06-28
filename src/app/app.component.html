@@ -1,3 +1,27 @@
-<h1>
-  {{title}}
-</h1>
+<header *ngIf="b_is_logged">
+    <i class="header__nav fa fa-bars" aria-hidden="true"></i>
+    <a href="/"><img src="./assets/img/commun/logo.svg" class="header__logo" alt="logo de Jaden By U"></a>
+    <a class="header__profil profil_picture" href="/profil" [style.background-image]="s_user_picture"></a>
+    <i class="header__logout fa fa-commenting-o" aria-hidden="true" (click)="logout()"></i>
+</header>
+<router-outlet></router-outlet>
+<nav *ngIf="b_is_logged">
+    <ul class="row nav__items">
+        <li class="col s3 nav__item">
+            <i class="fa fa-home"></i><br>
+            <span>Accueil</span>
+        </li>
+        <li class="col s3 nav__item">
+            <i class="fa fa-comments-o"></i><br>
+            <span>Chat</span>
+        </li>
+        <li class="col s3 nav__item">
+            <i class="fa fa-smile-o"></i><br>
+            <span>Profil</span>
+        </li>
+        <li class="col s3 nav__item">
+            <i class="fa fa-search"></i><br>
+            <span>Chercher</span>
+        </li>
+    </ul>
+</nav>

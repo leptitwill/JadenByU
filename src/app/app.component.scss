@@ -1,0 +1,67 @@
+@import "../assets/sass/vars";
+
+header {
+    height     : 50px;
+    padding    : 10px 1rem;
+    background : white;
+    text-align : center;
+}
+
+.header__logo {
+    position  : absolute;
+    left      : 50%;
+    width     : 30px;
+    height    : 30px;
+    transform : translateX(-50%);
+}
+
+.header__nav {
+    float       : left;
+    color       : $primary-color;
+    font-size   : 1.5rem;
+    line-height : 30px;
+}
+
+.header__profil {
+    width       : 30px;
+    height      : 30px;
+    float       : right;
+    margin-left : 1rem;
+    cursor      : pointer;
+}
+
+.header__logout {
+    float        : right;
+    padding-left : 1rem;
+    color        : $primary-color;
+    font-size    : 1.5rem;
+    line-height  : 30px;
+}
+
+nav {
+    position: fixed;
+    bottom: 0;
+    width:450px;
+    background: white;
+    z-index: 1;
+    box-shadow: $box-shadow;
+}
+
+.nav__item {
+    padding: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    color: $primary-color;
+
+    i {
+        font-size: 1.5rem;
+    }
+
+    span {
+        font-size: 0.8rem;
+    }
+
+    &:hover {
+        color: $secondary-color;
+    }
+}

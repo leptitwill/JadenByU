@@ -1,0 +1,13 @@
+<div class="login">
+    <img src="./assets/img/auth/logo.svg" class="login__logo" alt="logo de Jaden By U">
+    <div class="login__form">
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <p class="login__error">{{error_msg}}</p>
+            <label for="login_email">Adresse email</label>
+            <input type="text" name="email" id="login_email" value="" ngModel>
+            <label for="login_password">Mot de passe</label>
+            <input type="password" name="password" id="login_password" value="" ngModel>
+            <input type="submit" class="login__submit button--white" value="connexion">
+        </form>
+    </div>
+</div>

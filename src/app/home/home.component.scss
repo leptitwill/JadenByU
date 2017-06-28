@@ -1,0 +1,33 @@
+@import "../../assets/sass/vars";
+
+.comment {
+    padding: 1rem 0;
+    background: $light-grey;
+}
+
+.comment__intro {
+    line-height: 40px;
+    font-size: 1.2rem;
+}
+
+.comment__form {
+    padding: 1rem;
+    textarea {
+        resize: none;
+        height: 100px;
+        border-top: 1px solid $light-grey;
+        margin-bottom: 1rem;
+    }
+}
+
+.comment__attachment, .comment__form__button {
+    float: right;
+    color: $deep-grey;
+    margin-right: 1.5rem;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+        color: $primary-color;
+    }
+}
