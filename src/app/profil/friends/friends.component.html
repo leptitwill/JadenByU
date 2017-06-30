@@ -1,17 +1,24 @@
-<ul class="friends">
+<ng-template #error>
+    <div class="block center">
+        <p>{{s_error}}</p>
+    </div>
+</ng-template>
+<ul class="friends" *ngIf="a_friends?.length > 0; else error">
     <li *ngFor="let o_friend of a_friends" class="friend">
         <div class="friend__information">
-            <div class="friend__picture profil_picture" [style.background-image]="o_friend.profil_picture"></div>
+            <a href="/profil/{{o_friend.idFriend}}" class="friend__picture profil_picture" [style.background-image]="o_friend.profil_picture"></a>
             <p class="friend__name">{{o_friend.username}} {{o_friend.name}}</p>
             <p class="friend__date">Depuis le {{o_friend.date | date: 'dd/MM/yyyy'}}</p>
         </div>
         <div class="friend__action row">
-            <button class="col s6" type="button" name="chat"><i class="fa fa-comments-o"></i></button>
+            <a href="/chat/{{o_friend.idFriend}}">
+                <button class="col s6" type="button" name="chat"><i class="fa fa-comments-o"></i></button>
+            </a>
             <button class="col s6" type="button" name="delete" (click)="deleteFriends(o_friend.idUser)"><i class="fa fa-times"></i></button>
         </div>
     </li>
 </ul>
-<ul class="friends__suggestion">
+<ul *ngIf="b_my_profil" class="friends__suggestion">
     <li *ngFor="let o_user of a_users" class="friend__suggestion">
         <a href="/profil/{{o_user.idUser}}" class="friend__suggestion__picture profil_picture" [style.background-image]="o_user.profil_picture"></a>
     </li>

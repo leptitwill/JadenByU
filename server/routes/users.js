@@ -8,8 +8,9 @@ router.get('/all', function(req, res) {
   })
 })
 
-router.get('/get/:id', function(req, res) {
-  users.i_id_user = req.params.id;
+router.get('/get/:i_id_user/:i_id_actual_user', function(req, res) {
+  users.i_id_user        = req.params.i_id_user;
+  users.i_id_actual_user = req.params.i_id_actual_user;
   users.get(function(result) {
     res.json(result);
   })

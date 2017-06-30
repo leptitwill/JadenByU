@@ -1,6 +1,7 @@
 <section *ngIf="o_user" class="profil">
     <div class="profil__information" [style.background-image]="s_user_background">
-        <button *ngIf="!b_my_profil" class="profil__follow" type="button" name="follow" (click)="_friends.addFriends(o_user.idUser)">{{_friends.add}}</button>
+        <span *ngIf="!b_my_profil && !_friends.b_friend" class="profil__follow" (click)="_friends.addFriends(o_user.idUser)">{{_friends.s_add}}</span>
+        <span *ngIf="!b_my_profil && _friends.b_friend" class="profil__follow" (click)="_friends.deleteFriends(o_user.idUser)">{{_friends.s_remove}}</span>
         <div class="profil__picture profil_picture" [style.background-image]="s_user_picture"></div>
         <p class="profil__name">
             {{o_user.username}} {{o_user.name}}
@@ -8,10 +9,10 @@
         <p class="profil__tag tag">{{o_user.tag}}</p>
         <div class="row profil__stats">
             <div class="profil__friends col s6">
-                <i class="fa fa-smile-o"></i> 65
+                <i class="fa fa-smile-o"></i> {{_friends.a_friends?.length}}
             </div>
             <div class="profil__like col s6">
-                <i class="fa fa-heart-o"></i> 147
+                <i class="fa fa-heart-o"></i> {{i_like}}
             </div>
         </div>
     </div>
@@ -21,12 +22,17 @@
 </section>
 
 <ul class="row tabs">
-    <li class="tab col s4"><a href="#post" class="active">Posts</a></li>
-    <li class="tab col s4"><a href="#like">Likes</a></li>
-    <li class="tab col s4"><a href="#amis">Amis</a></li>
+    <li [ngClass]="{'s4': b_my_profil, 's6': !b_my_profil}" class="tab col"><a href="#post" class="active">Posts</a></li>
+    <li *ngIf="b_my_profil" class="tab col s4"><a href="#like">Likes</a></li>
+    <li [ngClass]="{'s4': b_my_profil, 's6': !b_my_profil}" class="tab col s4"><a href="#amis">Amis</a></li>
 </ul>
 <section id="post">
     <post></post>
+</section>
+<section id="like">
+    <div class="block">
+        <p class="center">Cette fonctionnalité n'est pas encore disponible</p>
+    </div>
 </section>
 <div id="amis">
     <friends></friends>

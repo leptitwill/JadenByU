@@ -9,6 +9,7 @@ const db      = require('./server/db')
 const users   = require('./server/routes/users');
 const posts   = require('./server/routes/posts');
 const friends = require('./server/routes/friends');
+const chat    = require('./server/routes/chat');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/api/users', users);
 app.use('/api/posts', posts);
 app.use('/api/friends', friends);
+app.use('/api/chat', chat);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

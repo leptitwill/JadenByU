@@ -1,0 +1,16 @@
+<section class="chat">
+    <div *ngIf="o_friend" class="chat__profil">
+        <div class="chat__profil__picture profil_picture" [style.background-image]="o_friend.profil_picture"></div>
+        <p class="chat__profil__name">{{o_friend.username}} {{o_friend.name}}</p>
+    </div>
+    <ul *ngIf="a_chat" class="chat__messages">
+        <li *ngFor="let o_chat of a_chat" [ngClass]="{'friend--message': o_chat.idUser == _global.o_user.idUser}" class="chat__message">
+            <p class="chat__message__content">{{o_chat.content}}</p>
+            <p class="chat__message__date">{{o_chat.date | date: 'dd/MM/yyyy à HH:mm'}}</p>
+        </li>
+    </ul>
+    <form class="chat__form" #chatForm="ngForm" (ngSubmit)="sendMessage(chatForm)">
+        <textarea class="chat__form__message" name="chat__message" placeholder="Écrire un message" ngModel></textarea>
+        <button type="submit" class="chat__form__submit"><i class="fa fa-send-o"></i></button>
+    </form>
+</section>

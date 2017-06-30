@@ -18,4 +18,11 @@ router.get('/user/:id', function(req, res) {
   })
 })
 
+router.get('/count-like/:id', function(req, res) {
+  posts.i_id_user = req.params.id;
+  posts.countLike(function(result) {
+    res.json(result);
+  })
+})
+
 module.exports = router;

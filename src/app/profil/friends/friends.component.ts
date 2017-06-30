@@ -1,5 +1,6 @@
 import { Component }    from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router }       from '@angular/router';
 import { Http }         from '@angular/http';
 import 'rxjs/Rx';
 
@@ -15,7 +16,7 @@ import { GlobalService } from '../../global.service';
 export class FriendsComponent {
 	// Récupère tous les amis
 	getAllFriends() {
-		return this.http.get('/api/friends/all/' + this._global.o_user.idUser)
+		return this.http.get('/api/friends/all/' + this.i_id_user)
 		.map(res => res.json())
 		.subscribe(res => {
 			this.a_friends = res;
@@ -28,7 +29,7 @@ export class FriendsComponent {
 	}
 	// Récupère tous les personnes qui ne sont pas amis avec lui
 	getNotFriends() {
-		return this.http.get('/api/friends/not/' + this._global.o_user.idUser)
+		return this.http.get('/api/friends/not/' + this.i_id_user)
 		.map(res => res.json())
 		.subscribe(res => {
 		    this.a_users = res;
@@ -41,19 +42,30 @@ export class FriendsComponent {
 	}
 	// Ajoute un ami
 	addFriends(i_id_friend) {
-		this.http.request('/api/friends/add/' + this._global.o_user.idUser + '/' + i_id_friend).subscribe();
+		this.http.request('/api/friends/add/' + this._global.o_user.idUser + '/' + i_id_friend).subscribe(
+			res => {
+				this.b_friend = true;
+			}
+		);
 	}
 	// Supprime un ami
 	deleteFriends(i_id_friend) {
 		this.http.request('/api/friends/delete/' + this._global.o_user.idUser + '/' + i_id_friend).subscribe(
 			res => {
+				this.b_friend = false;
 				this.getAllFriends();
 				this.getNotFriends();
 			}
 		);
 	}
 	// Constructeur
-	constructor(private http: Http, private _global:GlobalService, private sanitizer: DomSanitizer) {
+	constructor(private router: Router, private http: Http, private _global:GlobalService, private sanitizer: DomSanitizer) {
+		let s_id_user = this.router.url.split("/").pop();
+		if(this.router.url.includes('/profil/') && s_id_user){
+			this.i_id_user   = s_id_user;
+			this.s_error     = "Cette personne n'a pas encore d'amis ..."
+			this.b_my_profil = false;
+		}
 		// Récupère tous ses amis
 		this.getAllFriends();
 		// Récupère tous les utilisateurs
@@ -63,6 +75,13 @@ export class FriendsComponent {
 	a_friends : any;
 	// Utilisateurs
 	a_users : any;
-	// Texte pour ajouter un ami
-	add = 'ajouter';
+	// Id utilisateur
+	i_id_user = this._global.o_user.idUser;
+	// Boolen si il est deja ami
+	b_friend    = false;
+	b_my_profil = true;
+	// Texte pour ajouter/supprimer un ami
+	s_add    = 'ajouter';
+	s_remove = 'supprimer';
+	s_error  = "Vous n'avez pas encore d'amis ...";
 }

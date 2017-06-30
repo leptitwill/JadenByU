@@ -22,3 +22,14 @@ exports.getAll = function(result) {
 		return result(rows);
 	})
 }
+
+exports.countLike = function(result) {
+	db.get().query(
+		`SELECT COUNT(idPost) as nbLikes
+		FROM posts_likes
+		WHERE idUser = '`+this.i_id_user+`'`,
+		function (err, rows) {
+		if (err) return result(err);
+		return result(rows);
+	})
+}

@@ -9,14 +9,15 @@ import { RouterModule, Routes }  from '@angular/router';
 import { HomeModule }  from './home/home.module';
 
 // Services
-import { GlobalService }    from './global.service';
-import { AuthService }    from './auth/auth.service';
+import { GlobalService } from './global.service';
+import { AuthService }   from './auth/auth.service';
 
 // Components
-import { LoginComponent } from './auth/login.component';
-import { AppComponent }   from './app.component';
-import { HomeComponent }  from './home/home.component';
-import { ProfilComponent }  from './profil/profil.component';
+import { LoginComponent }  from './auth/login.component';
+import { AppComponent }    from './app.component';
+import { HomeComponent }   from './home/home.component';
+import { ProfilComponent } from './profil/profil.component';
+import { ChatComponent }   from './chat/chat.component';
 
 // Vars
 const appRoutes: Routes = [
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
 	{ path: '', component: HomeComponent, canActivate: [AuthService] },
 	{ path: 'profil', component: ProfilComponent, canActivate: [AuthService] },
 	{ path: 'profil/:id', component: ProfilComponent, canActivate: [AuthService] },
+	{ path: 'chat/:id', component: ChatComponent, canActivate: [AuthService] },
 	{ path: '**', redirectTo: '' }
 ];
 
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
 		LoginComponent,
 		AppComponent,
 		HomeComponent,
-		ProfilComponent
+		ProfilComponent,
+		ChatComponent
 	],
 	providers: [
 		AuthService

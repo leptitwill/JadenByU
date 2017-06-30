@@ -22,10 +22,11 @@ export class PostComponent {
 		if(this.router.url.includes('/profil')){
 			// On appel une autre requête
 			s_url = '/api/posts/user/';
-			console.log(this.router.url)
 			let s_id_user = this.router.url.split("/").pop();
 			if(this.router.url.includes('/profil/') && s_id_user){
-				i_id_user = s_id_user;
+				i_id_user         = s_id_user;
+				this.s_error      = "Cette personne n'a pas encore créé de posts ...";
+				this.b_my_profil  = false;
 			}
 		}
 		return this.http.get(s_url + i_id_user).map(res => res.json());
@@ -57,4 +58,6 @@ export class PostComponent {
 	}
 	// Posts
 	a_posts : any;
+	s_error      = "Vous n'avez pas encore créé de posts ..."
+	b_my_profil  = true;
 }

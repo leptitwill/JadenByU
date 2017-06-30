@@ -1,7 +1,7 @@
 <ng-template #error>
     <div class="block center">
-        <p>Vous n'avez pas encore créé de posts ...</p><br>
-        <a href="/" class="button">Créer mon premier post</a>
+        <p>{{s_error}}</p><br>
+        <a *ngIf="b_my_profil" href="/" class="button">Créer mon premier post</a>
     </div>
 </ng-template>
 <section *ngIf="a_posts?.length > 0; else error" class="posts">

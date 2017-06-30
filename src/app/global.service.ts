@@ -12,7 +12,7 @@ export class GlobalService {
 	}
 	// Récupère les infos d'un utilisateurs
 	getUser(i_id_user) {
-		return this.http.get('/api/users/get/' + i_id_user).map(res => res.json());
+		return this.http.get('/api/users/get/' + i_id_user + '/' + this.o_user.idUser).map(res => res.json());
 	}
 	// Informations sur l'utilisateur connecté
 	o_user = JSON.parse(localStorage.getItem('user'));

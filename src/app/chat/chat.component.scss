@@ -1,0 +1,90 @@
+@import "../../assets/sass/vars";
+
+.chat__messages {
+    height     : calc(100vh - 210px);
+    overflow-y : auto;
+
+    &::after {
+        content : '';
+        display : block;
+        clear   : both;
+    }
+}
+
+.chat__profil {
+    padding    : 0.5rem 1rem;
+    background : $primary-color;
+}
+
+.chat__profil__picture {
+    float        : left;
+    margin-right : 1rem;
+}
+
+.chat__profil__name {
+    color       : white;
+    line-height : 40px;
+}
+
+.chat__messages {
+    padding : 1rem;
+}
+
+.chat__message {
+    width         : 80%;
+    float         : left;
+    margin-bottom : 1rem;
+
+    .chat__message__content {
+        position      : relative;
+        margin-bottom : 5px;
+        padding       : 1rem;
+        color         : white;
+        background    : $primary-color;
+    }
+
+    &.friend--message {
+        float : right;
+
+        .chat__message__content {
+            color      : $black;
+            background : $light-grey;
+        }
+    }
+}
+
+.chat__message__date {
+    float     : right;
+    color     : $grey;
+    font-size : 0.8rem;
+}
+
+.chat__form {
+    border-top : 1px solid $light-grey;
+
+    &::after {
+        content : '';
+        display : block;
+        clear   : both;
+    }
+}
+
+.chat__form__message {
+    width  : calc(100% - 50px);
+    height : 50px;
+    float  : left;
+    resize : none;
+}
+
+.chat__form__submit {
+    width       : 50px;
+    float       : left;
+    color       : #b8dfd0;
+    background  : transparent;
+    line-height : 50px;
+    cursor      : pointer;
+
+    &:hover {
+        color : $primary-color;
+    }
+}

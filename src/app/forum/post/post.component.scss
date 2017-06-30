@@ -6,11 +6,17 @@
     }
 }
 
+.post {
+    border-top: 1px solid $light-grey;
+    &:first-of-type {
+        border-top: 0;
+    }
+}
+
 .post__content {
     width: 100%;
     background: white;
     border-bottom: 1px solid $light-grey;
-    border-top: 1px solid $light-grey;
     display: flex;
 }
 
