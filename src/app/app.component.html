@@ -8,20 +8,28 @@
 <nav *ngIf="b_is_logged">
     <ul class="row nav__items">
         <li class="col s3 nav__item">
-            <i class="fa fa-home"></i><br>
-            <span>Accueil</span>
+            <a href="/">
+                <i class="fa fa-home"></i><br>
+                <span>Accueil</span>
+            </a>
         </li>
         <li class="col s3 nav__item">
-            <i class="fa fa-comments-o"></i><br>
-            <span>Chat</span>
+            <a href="/chat">
+                <i class="fa fa-comments-o"></i><br>
+                <span>Chat</span>
+            </a>
         </li>
         <li class="col s3 nav__item">
-            <i class="fa fa-smile-o"></i><br>
-            <span>Profil</span>
+            <a href="/profil">
+                <i class="fa fa-smile-o"></i><br>
+                <span>Profil</span>
+            </a>
         </li>
         <li class="col s3 nav__item">
-            <i class="fa fa-search"></i><br>
-            <span>Chercher</span>
+            <a href="#">
+                <i class="fa fa-search"></i><br>
+                <span>Chercher</span>
+            </a>
         </li>
     </ul>
 </nav>

@@ -25,6 +25,7 @@ const appRoutes: Routes = [
 	{ path: '', component: HomeComponent, canActivate: [AuthService] },
 	{ path: 'profil', component: ProfilComponent, canActivate: [AuthService] },
 	{ path: 'profil/:id', component: ProfilComponent, canActivate: [AuthService] },
+	{ path: 'chat', component: ChatComponent, canActivate: [AuthService] },
 	{ path: 'chat/:id', component: ChatComponent, canActivate: [AuthService] },
 	{ path: '**', redirectTo: '' }
 ];

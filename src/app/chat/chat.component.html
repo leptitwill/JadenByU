@@ -1,16 +1,44 @@
-<section class="chat">
+<section *ngIf="!b_chat_list; else chatList" class="chat">
     <div *ngIf="o_friend" class="chat__profil">
         <div class="chat__profil__picture profil_picture" [style.background-image]="o_friend.profil_picture"></div>
         <p class="chat__profil__name">{{o_friend.username}} {{o_friend.name}}</p>
     </div>
-    <ul *ngIf="a_chat" class="chat__messages">
+    <ng-template #error>
+        <div id="chat__messages" class="block center">
+            <p>Vous n'avez pas encore de disccussion avec cette personne ...</p>
+        </div>
+    </ng-template>
+    <ul *ngIf="a_chat?.length > 0; else error" id="chat__messages">
         <li *ngFor="let o_chat of a_chat" [ngClass]="{'friend--message': o_chat.idUser == _global.o_user.idUser}" class="chat__message">
             <p class="chat__message__content">{{o_chat.content}}</p>
             <p class="chat__message__date">{{o_chat.date | date: 'dd/MM/yyyy à HH:mm'}}</p>
         </li>
     </ul>
     <form class="chat__form" #chatForm="ngForm" (ngSubmit)="sendMessage(chatForm)">
-        <textarea class="chat__form__message" name="chat__message" placeholder="Écrire un message" ngModel></textarea>
+        <textarea class="chat__form__message" name="chat__message" placeholder="Écrire un message" ngModel [(ngModel)]="s_textarea"></textarea>
         <button type="submit" class="chat__form__submit"><i class="fa fa-send-o"></i></button>
     </form>
 </section>
+
+<ng-template #chatList>
+    <div class="chat__title">
+        <p class="center">Vos discussions</p>
+    </div>
+    <ng-template #errorList>
+        <div class="block center">
+            <p>Vous n'avez pas encore de disccussion</p>
+        </div>
+    </ng-template>
+    <ul *ngIf="a_chat?.length > 0; else errorList" class="chat__list">
+        <li *ngFor="let o_chat of a_chat">
+            <ng-container *ngIf="o_chat.a_chat.content">
+                <a href="/chat/{{o_chat.friend.idFriend}}" class="chat__item">
+                    <div class="profil_picture chat__item__picture" [style.background-image]="o_chat.friend.profil_picture"></div>
+                    <p class="chat__item__name">{{o_chat.friend.username}} {{o_chat.friend.name}}</p>
+                    <p class="chat__item__date">{{o_chat.a_chat.date | date: 'dd/MM/yyyy à HH:mm'}}</p>
+                    <p class="chat__item__content truncate">{{o_chat.a_chat.content}}</p>
+                </a>
+            </ng-container>
+        </li>
+    </ul>
+</ng-template>

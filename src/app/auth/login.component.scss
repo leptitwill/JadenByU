@@ -1,7 +1,11 @@
 @import "../../assets/sass/vars";
 
+/deep/ main {
+    padding-bottom: 0;
+}
+
 .login {
-    height     : 100vh;
+    min-height : 100vh;
     background : linear-gradient(
     to bottom,
     $primary-color 0%,
@@ -11,23 +15,18 @@
 
 .login__logo {
     display : block;
-    height  : 50vh;
+    height  : calc(100vh - 281px);
+    min-height: 300px;
     margin  : auto;
     padding : 2rem;
 }
 
 .login__form {
-    position : relative;
     width    : 100%;
-    height   : 50vh;
     color    : white;
 
     form {
-        position : absolute;
-        bottom   : 0;
-        left     : 0;
-        width    : 100%;
-        padding  : 2rem;
+        padding  : 0 2rem 2rem;
     }
 }
 

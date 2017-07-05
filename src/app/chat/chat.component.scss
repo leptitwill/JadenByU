@@ -1,19 +1,9 @@
 @import "../../assets/sass/vars";
 
-.chat__messages {
-    height     : calc(100vh - 210px);
-    overflow-y : auto;
-
-    &::after {
-        content : '';
-        display : block;
-        clear   : both;
-    }
-}
-
 .chat__profil {
     padding    : 0.5rem 1rem;
     background : $primary-color;
+    border-bottom: 1px solid white;
 }
 
 .chat__profil__picture {
@@ -26,14 +16,26 @@
     line-height : 40px;
 }
 
-.chat__messages {
+#chat__messages {
     padding : 1rem;
+    height     : calc(100vh - 212px);
+    overflow-y : auto;
+
+    &::after {
+        content : '';
+        display : block;
+        clear   : both;
+    }
 }
 
 .chat__message {
     width         : 80%;
     float         : left;
     margin-bottom : 1rem;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
 
     .chat__message__content {
         position      : relative;
@@ -87,4 +89,40 @@
     &:hover {
         color : $primary-color;
     }
+}
+
+.chat__title {
+    color: white;
+    padding    : 0.5rem 1rem;
+    background : $primary-color;
+    text-transform: uppercase;
+}
+
+.chat__item {
+    border-bottom: 1px solid $light-grey;
+    padding: 1rem;
+    position: relative;
+    display: block;
+}
+
+.chat__item__picture {
+    float: left;
+    margin-right: 1rem;
+}
+
+.chat__item__name, .chat__item__content {
+    line-height: 20px;
+    color: $black;
+}
+
+.chat__item__content {
+    color: $deep-grey;
+}
+
+.chat__item__date {
+    color: $grey;
+    font-size: 0.8rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }

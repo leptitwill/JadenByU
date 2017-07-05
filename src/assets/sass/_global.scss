@@ -10,8 +10,8 @@ main {
 	width          : 100%;
 	max-width      : 450px;
 	min-height     : 100vh;
-	padding-bottom : 55px;
 	background     : white;
+	padding-bottom : 55px;
 }
 
 input:-webkit-autofill {
@@ -58,4 +58,11 @@ input:-webkit-autofill {
 
 .center {
 	text-align: center;
+}
+
+.truncate {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
