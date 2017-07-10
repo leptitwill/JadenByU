@@ -18,6 +18,7 @@ import { AppComponent }    from './app.component';
 import { HomeComponent }   from './home/home.component';
 import { ProfilComponent } from './profil/profil.component';
 import { ChatComponent }   from './chat/chat.component';
+import { NewComponent }    from './blog/new/new.component';
 
 // Vars
 const appRoutes: Routes = [
@@ -27,6 +28,8 @@ const appRoutes: Routes = [
 	{ path: 'profil/:id', component: ProfilComponent, canActivate: [AuthService] },
 	{ path: 'chat', component: ChatComponent, canActivate: [AuthService] },
 	{ path: 'chat/:id', component: ChatComponent, canActivate: [AuthService] },
+	{ path: 'news', component: NewComponent, canActivate: [AuthService] },
+	{ path: 'news/:id', component: NewComponent, canActivate: [AuthService] },
 	{ path: '**', redirectTo: '' }
 ];
 
@@ -45,7 +48,8 @@ const appRoutes: Routes = [
 		AppComponent,
 		HomeComponent,
 		ProfilComponent,
-		ChatComponent
+		ChatComponent,
+		NewComponent
 	],
 	providers: [
 		AuthService

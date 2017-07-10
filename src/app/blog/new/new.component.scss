@@ -1,5 +1,41 @@
-h1 {
-  color: #FFFFFF;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+@import "../../../assets/sass/vars";
+
+.new {
+    width: 100%;
+}
+
+.new__info {
+    display: flex;
+}
+
+.new__info__cover {
+    background-position: center;
+    background-size: cover;
+}
+
+.new__info__content {
+    padding: 1rem;
+
+}
+
+.new__profil__picture {
+    float: left;
+    margin-right: 0.5rem;
+}
+
+.new__profil__name, .new__date {
+    line-height: 20px;
+}
+
+.new__date {
+    color: $grey;
+    font-size: 0.8rem;
+}
+
+.new__title {
+    margin: 1rem 0;
+}
+
+.new__tags {
+    margin-bottom: 1rem;
 }

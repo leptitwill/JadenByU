@@ -38,29 +38,110 @@ header {
     line-height  : 30px;
 }
 
-nav {
-    position: fixed;
-    bottom: 0;
-    width:450px;
-    max-width: 100%;
-    background: white;
-    z-index: 1;
-    box-shadow: $box-shadow;
+.nav {
+    z-index    : 1;
+    position   : fixed;
+    bottom     : 0;
+    width      : 450px;
+    max-width  : 100%;
+    background : white;
+    box-shadow : $box-shadow;
 }
 
 .nav__item {
-    padding: 0.5rem;
-    text-align: center;
+    padding    : 0.5rem;
+    text-align : center;
 
     a {
-        color: $primary-color;
+        color : $primary-color;
 
         i {
-            font-size: 1.5rem;
+            font-size : 1.5rem;
         }
 
         span {
-            font-size: 0.8rem;
+            font-size : 0.8rem;
         }
     }
+}
+
+#mobile_nav {
+    position   : fixed;
+    top        : 0;
+    width      : 0;
+    max-width  : 450px;
+    height     : 100vh;
+    overflow   : hidden;
+    transition : width 0.5s ease;
+
+    &.active {
+        width      : 100%;
+        transition : 0s;
+        background: rgba($black, 0.6);
+
+        .nav_mobile__items {
+            left : 0;
+        }
+    }
+}
+
+.nav_mobile__items {
+    position   : absolute;
+    left       : -300px;
+    width      : 300px;
+    height     : 100%;
+    color      : white;
+    background : $primary-color;
+    transition : 0.5s ease;
+
+    li {
+        padding: 0 1rem;
+
+        p {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(white, 0.4);
+        }
+    }
+}
+
+.nav_mobile__profil {
+        background : linear-gradient(
+        to bottom,
+        $primary-color 0%,
+        darken($primary-color, 10%) 100%
+        );
+        color: white;
+        padding: 1rem;
+}
+
+.nav_mobile__profil__picture {
+    display: inline-block;
+    margin: 1rem 0 0.5rem;
+    width: 50px;
+    height: 50px;
+}
+
+.nav_mobile__profil__action::after {
+    content : '';
+    display : block;
+    clear   : both;
+}
+
+.nav_mobile__profil__hide {
+    float: left;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.nav_mobile__profil__logout {
+    float: right;
+    cursor: pointer;
+}
+
+.nav_mobile__profil__name {
+    text-transform: uppercase;
+}
+
+.nav_mobile__profil__email {
+    opacity: 0.6;
 }

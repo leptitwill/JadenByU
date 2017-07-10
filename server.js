@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const db      = require('./server/db')
 const users   = require('./server/routes/users');
 const posts   = require('./server/routes/posts');
+const news    = require('./server/routes/news');
 const friends = require('./server/routes/friends');
 const chat    = require('./server/routes/chat');
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // Routes
 app.use('/api/users', users);
 app.use('/api/posts', posts);
+app.use('/api/news', news);
 app.use('/api/friends', friends);
 app.use('/api/chat', chat);
 

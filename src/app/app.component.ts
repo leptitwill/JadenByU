@@ -22,6 +22,16 @@ export class AppComponent {
 			this.b_is_logged = localStorage.getItem("user") ? true : false;
 		});
 	}
+	// Ouvre le menu
+	show_nav(){
+		let nav = document.getElementById('mobile_nav');
+		nav.classList.add('active');
+	}
+	// Ferme le menu
+	hide_nav(){
+		let nav = document.getElementById('mobile_nav');
+		nav.classList.remove('active');
+	}
 	// Fonction pour se déconnecter
 	logout() {
 		this._service.logout();
