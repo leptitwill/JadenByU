@@ -16,8 +16,11 @@ import { FriendsComponent } from './friends/friends.component';
 })
 
 export class ProfilComponent {
-	countLike(i_id_user) {
-		return this.http.get('/api/posts/count-like/' + i_id_user).map(res => res.json());
+	countFollower(i_id_user) {
+		return this.http.get('/api/friends/count-follower/' + i_id_user).map(res => res.json());
+	}
+	countPost(i_id_user) {
+		return this.http.get('/api/posts/count-post/' + i_id_user).map(res => res.json());
 	}
 	// Constructeur
 	constructor(private http: Http, private sanitizer: DomSanitizer, private _global:GlobalService, private _friends:FriendsComponent, private _route:ActivatedRoute) {
@@ -36,10 +39,16 @@ export class ProfilComponent {
 				this.s_user_picture    = sanitizer.bypassSecurityTrustStyle('url(./../assets/img/profil/' + this.o_user.idUser + '.jpg)');
 				this.s_user_background = sanitizer.bypassSecurityTrustStyle('url(./../assets/img/profil/background/' + this.o_user.idUser + '.jpg)');
 			});
-			// Récupère le nombre de like
-			this.countLike(this.i_id_user).subscribe(
+			// Récupère le nombre de follower
+			this.countFollower(this.i_id_user).subscribe(
 				res => {
-					this.i_like = res[0].nbLikes;
+					this.i_follower = res[0].nbFollowers;
+				}
+			);
+			// Récupère le nombre de posts
+			this.countPost(this.i_id_user).subscribe(
+				res => {
+					this.i_post = res[0].nbPosts;
 				}
 			);
 		}
@@ -50,9 +59,15 @@ export class ProfilComponent {
 			// Image de fond du profil
 			this.s_user_background = this._global.s_user_background;
 			// Récupère le nombre de like
-			this.countLike(this.o_user.idUser).subscribe(
+			this.countFollower(this.o_user.idUser).subscribe(
 				res => {
-					this.i_like = res[0].nbLikes;
+					this.i_follower = res[0].nbFollowers;
+				}
+			);
+			// Récupère le nombre de posts
+			this.countPost(this.o_user.idUser).subscribe(
+				res => {
+					this.i_post = res[0].nbPosts;
 				}
 			);
 		}
@@ -61,8 +76,10 @@ export class ProfilComponent {
 	i_id_user: any;
 	// informations sur l'utilisateur connecté
 	o_user: any;
-	// Nombre de like
-	i_like: any;
+	// Nombre de follower
+	i_follower: any;
+	// Nombre de posts
+	i_post: any;
 	// Boolen si c'est mon profil
 	b_my_profil = true;
 	// Photo de profil

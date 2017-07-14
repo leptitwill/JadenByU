@@ -1,9 +1,11 @@
 @import "../../../assets/sass/vars";
+
 .album {
     padding: 1rem 1rem 0.5rem;
 	column-count: 3;
     column-gap: 1em;
 }
+
 .album__picture {
     margin-bottom: 0.5rem;
     display: inline-block;

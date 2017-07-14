@@ -6,13 +6,20 @@
         <p class="profil__name">
             {{o_user.username}} {{o_user.name}}
         </p>
-        <p class="profil__tag tag">{{o_user.tag}}</p>
+        <span class="profil__tag tag">{{o_user.tag}}</span>|
+        <span class="profil__tag tag">{{o_user.level}}</span>
         <div class="row profil__stats">
-            <div class="profil__friends col s6">
-                <i class="fa fa-smile-o"></i> {{_friends.a_friends?.length}}
+            <div class="profil__friends col s4">
+                {{i_post}}<br>
+                <p>Publications</p>
             </div>
-            <div class="profil__like col s6">
-                <i class="fa fa-heart-o"></i> {{i_like}}
+            <div class="profil__like col s4">
+                {{i_follower}}<br>
+                <p>Abonnés</p>
+            </div>
+            <div class="profil__like col s4">
+                {{_friends.a_friends?.length}}<br>
+                <p>Abonnemments</p>
             </div>
         </div>
     </div>

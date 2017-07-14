@@ -60,14 +60,19 @@
 }
 
 .profil__stats {
-    width  : 150px;
+    width  : 300px;
     margin : auto;
 
     div {
         text-align : center;
+
+        p {
+            font-size: 0.8rem;
+        }
     }
 }
 
 .profil__description {
     padding : 1rem;
+    background: white;
 }

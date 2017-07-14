@@ -47,3 +47,14 @@ exports.delete = function(result) {
 		return result(rows);
 	})
 }
+
+exports.countFollower = function(result) {
+	db.get().query(
+		`SELECT COUNT(idUser) as nbFollowers
+		FROM users_friends
+		WHERE idFriend = '`+this.i_id_user+`'`,
+		function (err, rows) {
+		if (err) return result(err);
+		return result(rows);
+	})
+}

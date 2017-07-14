@@ -33,3 +33,14 @@ exports.countLike = function(result) {
 		return result(rows);
 	})
 }
+
+exports.countPost = function(result) {
+	db.get().query(
+		`SELECT COUNT(idPost) as nbPosts
+		FROM posts
+		WHERE idUser = '`+this.i_id_user+`'`,
+		function (err, rows) {
+		if (err) return result(err);
+		return result(rows);
+	})
+}

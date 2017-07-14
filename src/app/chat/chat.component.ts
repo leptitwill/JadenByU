@@ -58,7 +58,6 @@ export class ChatComponent implements AfterViewChecked {
 				// Récupère le contenu du chat
 				this.getChat(o_chat.idChat).subscribe(res => {
 					o_chat.a_chat = res[res.length-1];
-					console.log(	o_chat.a_chat);
 				})
 			}
 		});

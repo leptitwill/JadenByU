@@ -38,4 +38,11 @@ router.get('/delete/:id_user/:id_friend', function(req, res) {
   })
 })
 
+router.get('/count-follower/:id', function(req, res) {
+  friends.i_id_user = req.params.id;
+  friends.countFollower(function(result) {
+    res.json(result);
+  })
+})
+
 module.exports = router;
