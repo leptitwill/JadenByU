@@ -23,16 +23,14 @@
 
 <ul class="row tabs">
     <li [ngClass]="{'s4': b_my_profil, 's6': !b_my_profil}" class="tab col"><a href="#post" class="active">Posts</a></li>
-    <li *ngIf="b_my_profil" class="tab col s4"><a href="#like">Likes</a></li>
+    <li *ngIf="b_my_profil" class="tab col s4"><a href="#album">Album</a></li>
     <li [ngClass]="{'s4': b_my_profil, 's6': !b_my_profil}" class="tab col s4"><a href="#amis">Amis</a></li>
 </ul>
 <section id="post">
     <post></post>
 </section>
-<section *ngIf="b_my_profil" id="like">
-    <div class="block">
-        <p class="center">Cette fonctionnalité n'est pas encore disponible</p>
-    </div>
+<section *ngIf="b_my_profil" id="album">
+    <album></album>
 </section>
 <div id="amis">
     <friends></friends>

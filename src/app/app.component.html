@@ -15,9 +15,9 @@
             </a>
         </li>
         <li class="col s3 nav__item">
-            <a href="/chat">
-                <i class="fa fa-comments-o"></i><br>
-                <span>Chat</span>
+            <a href="/search">
+                <i class="fa fa-search"></i><br>
+                <span>Chercher</span>
             </a>
         </li>
         <li class="col s3 nav__item">
@@ -27,15 +27,15 @@
             </a>
         </li>
         <li class="col s3 nav__item">
-            <a href="#">
-                <i class="fa fa-search"></i><br>
-                <span>Chercher</span>
+            <a href="/chat">
+                <i class="fa fa-comments-o"></i><br>
+                <span>Chat</span>
             </a>
         </li>
     </ul>
 </nav>
 
-<nav id="mobile_nav">
+<nav *ngIf="b_is_logged" id="mobile_nav">
     <ul class="nav_mobile__items">
         <div class="nav_mobile__profil center">
             <div class="nav_mobile__profil__action">
@@ -46,9 +46,9 @@
             <p class="nav_mobile__profil__name">{{_global.o_user.username}} {{_global.o_user.name}}</p>
             <p class="nav_mobile__profil__email">{{_global.o_user.email}}</p>
         </div>
-        <li><p>Forum</p></li>
-        <li><p>Blog</p></li>
-        <li><p>Paramètres</p></li>
-        <li><p>Aide</p></li>
+        <li><a href="">Forum</a></li>
+        <li><a href="/news">Blog</a></li>
+        <li><a href="">Paramètres</a></li>
+        <li><a href="">Aide</a></li>
     </ul>
 </nav>

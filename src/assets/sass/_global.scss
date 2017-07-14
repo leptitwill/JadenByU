@@ -45,7 +45,7 @@ input:-webkit-autofill {
 	margin-right   : 0.5rem;
 	color          : $primary-color;
 	text-transform : uppercase;
-	font-size      : 0.9rem;
+	font-size      : 0.8rem;
 
 	&::before {
 		content : '#';
@@ -54,6 +54,55 @@ input:-webkit-autofill {
 
 .block {
 	padding: 2rem 1rem;
+}
+
+.block--news {
+	padding: 2rem !important;
+}
+
+.block--flex {
+	display: flex;
+}
+
+.block--color {
+	background: lighten($primary-color, 35%);
+}
+
+.block__border {
+	position: relative;
+	padding: 2rem;
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		left: 0;
+		top: 0;
+		border-left: 3px solid $primary-color;
+		border-top: 3px solid $primary-color;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		right: 0;
+		bottom: 0;
+		border-right: 3px solid $primary-color;
+		border-bottom: 3px solid $primary-color;
+	}
+}
+
+.image--news {
+	width: 100%;
+	display: block;
+}
+
+.cover--news {
+	background-position: center;
+    background-size: cover;
 }
 
 .center {

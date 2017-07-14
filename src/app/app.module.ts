@@ -5,9 +5,6 @@ import { FormsModule }           from '@angular/forms';
 import { HttpModule }            from '@angular/http';
 import { RouterModule, Routes }  from '@angular/router';
 
-// My Modules
-import { HomeModule }  from './home/home.module';
-
 // Services
 import { GlobalService } from './global.service';
 import { AuthService }   from './auth/auth.service';
@@ -16,9 +13,13 @@ import { AuthService }   from './auth/auth.service';
 import { LoginComponent }  from './auth/login.component';
 import { AppComponent }    from './app.component';
 import { HomeComponent }   from './home/home.component';
+import { PostComponent }   from './forum/post/post.component';
 import { ProfilComponent } from './profil/profil.component';
 import { ChatComponent }   from './chat/chat.component';
 import { NewComponent }    from './blog/new/new.component';
+import { AlbumComponent }  from './profil/album/album.component';
+import { SearchComponent }  from './search/search.component';
+import { FriendsComponent }  from './profil/friends/friends.component';
 
 // Vars
 const appRoutes: Routes = [
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
 	{ path: 'chat/:id', component: ChatComponent, canActivate: [AuthService] },
 	{ path: 'news', component: NewComponent, canActivate: [AuthService] },
 	{ path: 'news/:id', component: NewComponent, canActivate: [AuthService] },
+	{ path: 'search', component: SearchComponent, canActivate: [AuthService] },
 	{ path: '**', redirectTo: '' }
 ];
 
@@ -40,8 +42,6 @@ const appRoutes: Routes = [
 		FormsModule,
 		HttpModule,
 		RouterModule.forRoot(appRoutes),
-		// My Modules
-		HomeModule
 	],
 	declarations: [
 		LoginComponent,
@@ -49,7 +49,11 @@ const appRoutes: Routes = [
 		HomeComponent,
 		ProfilComponent,
 		ChatComponent,
-		NewComponent
+		NewComponent,
+		AlbumComponent,
+		SearchComponent,
+		PostComponent,
+		FriendsComponent
 	],
 	providers: [
 		AuthService

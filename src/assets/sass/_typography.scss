@@ -15,3 +15,44 @@ h3 {
     text-transform: uppercase;
     margin-bottom: 1rem;
 }
+
+blockquote {
+    font-family: initial;
+    quotes: "\201C""\201D""\2018""\2019";
+    display: inline-block;
+    position: relative;
+    padding: 1rem 2rem;
+    text-align: center;
+
+    &:before {
+        position: absolute;
+        color: $primary-color;
+        content: open-quote;
+        font-size: 3rem;
+        line-height: 1rem;
+        left: 0;
+        top: 0;
+    }
+
+    &:after {
+        position: absolute;
+        color: $primary-color;
+        content: close-quote;
+        font-size: 3rem;
+        line-height: 1rem;
+        right: 0;
+        bottom: -20px;
+    }
+
+    p {
+        display: inline;
+    }
+}
+
+.color--primary {
+    color: $primary-color;
+}
+
+.color--secondary {
+    color: $secondary-color;
+}

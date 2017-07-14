@@ -11,6 +11,7 @@ const posts   = require('./server/routes/posts');
 const news    = require('./server/routes/news');
 const friends = require('./server/routes/friends');
 const chat    = require('./server/routes/chat');
+const album   = require('./server/routes/album');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/api/posts', posts);
 app.use('/api/news', news);
 app.use('/api/friends', friends);
 app.use('/api/chat', chat);
+app.use('/api/album', album);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

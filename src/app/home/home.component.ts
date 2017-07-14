@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 import { GlobalService } from '../global.service';
 
-import { PostComponent } from '../forum/post/post.component';
-
 @Component({
 	selector    : 'home',
 	templateUrl : './home.component.html',

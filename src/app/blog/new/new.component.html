@@ -1,26 +1,58 @@
-<section class="new">
-	<div class="new__info row">
-		<div class="new__info__cover col s6" style="background-image: url('./../assets/img/blog/news/1.jpg');"></div>
+<section *ngIf="o_new; else newsList" class="new">
+	<div class="new__info row" [ngClass]="{'new__admin': o_new.isAdmin}">
+		<div class="new__info__cover col s6" [style.background-image]="this.o_new.s_new_cover"></div>
 		<div class="new__info__content col s6">
-			<div class="new__profil__picture profil_picture" style="background-image: url('./../assets/img/profil/1.jpg');"></div>
-			<p class="new__profil__name">Will west</p>
-			<p class="new__date">45/45/4/5</p>
-			<h2 class="new__title">Une terrasse bohème parfumée</h2>
+			<div class="new__profil__picture profil_picture" [style.background-image]="this.o_new.s_user_picture"></div>
+			<p class="new__profil__name">{{o_new.username}} {{o_new.name}}</p>
+			<p class="new__date">{{o_new.date | date: 'dd/MM/yyyy à HH:mm'}}</p>
+			<h2 class="new__title">{{o_new.title}}</h2>
 			<ul class="new__tags">
-				<li class="new__tag tag">Terrasse</li>
-				<li class="new__tag tag">Boho</li>
-				<li class="new__tag tag">Fleurs</li>
+				<li *ngFor="let s_tag of o_new.tags" class="new__tag tag">{{s_tag}}</li>
 			</ul>
 			<div class="row">
-				<div class="col s6 center">
-					<i class="fa fa-eye"></i>
-					vue
-				</div>
-				<div class="col s6 center">
-					<i class="fa fa-heart-o"></i>
-					like
-				</div>
+				<div class="col s6"><i class="fa fa-eye"></i> {{o_new.nbViews}}</div>
+				<div class="col s6"><i class="fa fa-heart-o"></i> {{o_new.nbLikes}}</div>
 			</div>
 		</div>
 	</div>
+	<div [innerHTML]="o_new.s_content"></div>
+	<div class="new__actions">
+		<div class="new__action__comment">
+			<form>
+				<textarea name="new_comment" placeholder="Écrire un commentaire"></textarea>
+				<button type="submit"><i class="fa fa-send-o"></i></button>
+			</form>
+		</div>
+		<div class="new__action__like">
+			<div class="button_like"></div>
+		</div>
+	</div>
+	<ul *ngIf="a_comments?.length > 0" class="new__comments">
+		<h3 class="new__comments__title">Commentaires</h3>
+		<li *ngFor="let o_comment of a_comments" class="new__comment">
+			<div class="new__comment__picture profil_picture" [style.background-image]="o_comment.s_user_picture"></div>
+			<p *ngIf="o_comment.user" class="new__comment__name">{{o_comment.user.username}} {{o_comment.user.name}}</p>
+			<p class="new__comment__date">{{o_comment.date | date: 'dd/MM/yyyy à HH:mm'}}</p>
+			<p class="new__comment__content">{{o_comment.content}}</p>
+		</li>
+	</ul>
 </section>
+
+<ng-template #newsList>
+	<a href="/news/{{o_new.idNew}}" *ngFor="let o_new of a_news" class="new__info new__list row" [ngClass]="{'new__admin': o_new.isAdmin}">
+		<div class="new__info__cover col s6" [style.background-image]="this.o_new.s_new_cover"></div>
+		<div class="new__info__content col s6">
+			<div class="new__profil__picture profil_picture" [style.background-image]="this.o_new.s_user_picture"></div>
+			<p class="new__profil__name">{{o_new.username}} {{o_new.name}}</p>
+			<p class="new__date">{{o_new.date | date: 'dd/MM/yyyy à HH:mm'}}</p>
+			<h2 class="new__title">{{o_new.title}}</h2>
+			<ul class="new__tags">
+				<li *ngFor="let s_tag of o_new.tags" class="new__tag tag">{{s_tag}}</li>
+			</ul>
+			<div class="row">
+				<div class="col s6"><i class="fa fa-eye"></i> {{o_new.nbViews}}</div>
+				<div class="col s6"><i class="fa fa-heart-o"></i> {{o_new.nbLikes}}</div>
+			</div>
+		</div>
+	</a>
+</ng-template>

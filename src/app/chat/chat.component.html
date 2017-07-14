@@ -31,7 +31,7 @@
     </ng-template>
     <ul *ngIf="a_chat?.length > 0; else errorList" class="chat__list">
         <li *ngFor="let o_chat of a_chat">
-            <ng-container *ngIf="o_chat.a_chat.content">
+            <ng-container *ngIf="o_chat.a_chat">
                 <a href="/chat/{{o_chat.friend.idFriend}}" class="chat__item">
                     <div class="profil_picture chat__item__picture" [style.background-image]="o_chat.friend.profil_picture"></div>
                     <p class="chat__item__name">{{o_chat.friend.username}} {{o_chat.friend.name}}</p>

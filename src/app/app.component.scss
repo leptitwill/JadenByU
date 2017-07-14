@@ -97,9 +97,11 @@ header {
     li {
         padding: 0 1rem;
 
-        p {
+        a {
             padding: 1rem 0;
             border-bottom: 1px solid rgba(white, 0.4);
+            display: block;
+            color: white;
         }
     }
 }

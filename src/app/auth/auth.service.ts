@@ -25,7 +25,7 @@ export class AuthService implements CanActivate {
 			// Si il tente d'accéder à la page login
 			if(localStorage.getItem('user')) {
 				// On le redirige vers la page d'acceuil
-				this._router.navigate(['home']);
+				this._router.navigate(['/']);
 				return false;
 			}
 			return true;
@@ -48,7 +48,7 @@ export class AuthService implements CanActivate {
 			// On stocke ses informations
 			localStorage.setItem("user", JSON.stringify(o_connected_user));
 			// On redirige vers la page d'accueil
-			this._router.navigate(['home']);
+			this._router.navigate(['/']);
 			return true;
 		}
 		return false;

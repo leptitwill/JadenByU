@@ -13,8 +13,9 @@ exports.getAll = function(result) {
 	else {
 		query += `
 		WHERE users_friends.idUser != '`+this.i_id_user+`'
-		OR users_friends.idUser IS NULL
 		AND users.idUser != '`+this.i_id_user+`'
+		AND users.isAdmin = '0'
+		OR (users_friends.idUser IS NULL AND users.isAdmin = '0')
 		ORDER BY rand()
 		LIMIT 5`;
 	}
