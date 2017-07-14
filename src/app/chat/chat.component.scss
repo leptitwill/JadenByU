@@ -3,7 +3,7 @@
 .chat__profil {
     padding    : 0.5rem 1rem;
     background : $primary-color;
-    border-bottom: 1px solid $light-grey;
+    border-bottom: 1px solid white;
 }
 
 .chat__profil__picture {
@@ -50,7 +50,7 @@
 
         .chat__message__content {
             color      : $black;
-            background : white;
+            background : $light-grey;
         }
     }
 }
@@ -101,7 +101,7 @@
 
 .chat__item {
     background: white;
-    margin-top: 1rem;
+    border-bottom: 1px solid $light-grey;
     padding: 1rem;
     position: relative;
     display: block;
@@ -118,7 +118,7 @@
 }
 
 .chat__item__content {
-    color: $deep-grey;
+    color: $grey;
 }
 
 .chat__item__date {

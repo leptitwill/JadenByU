@@ -1,0 +1,10 @@
+<div *ngIf="a_pictures" class="gallery">
+    <figure class="gallery__picture" *ngFor="let o_picture of a_pictures">
+        <img [src]="o_picture.s_picture" alt="">
+        <figcaption>
+            <div class="gallery__picture__user profil_picture" [style.background-image]="o_picture.s_user_picture"></div>
+            <p class="tag truncate">{{o_picture.tag_box}}</p>
+            <p class="tag truncate">{{o_picture.tag_size}}</p>
+        </figcaption>
+    </figure>
+</div>
