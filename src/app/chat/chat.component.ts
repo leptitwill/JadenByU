@@ -72,6 +72,7 @@ export class ChatComponent implements AfterViewChecked {
 			data.append('i_id_chat', this.i_id_chat);
 			data.append('i_id_user', this._global.o_user.idUser);
 			data.append('s_message', o_message.value.chat__message);
+			console.log(data);
 
 		this.http.post('/api/chat/send', data)
 		.subscribe(res => {

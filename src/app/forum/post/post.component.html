@@ -4,34 +4,59 @@
         <a *ngIf="b_my_profil" href="/" class="button">Créer mon premier post</a>
     </div>
 </ng-template>
-<section *ngIf="a_posts?.length > 0; else error" class="posts">
+<section *ngIf="a_posts?.length > 0; else post" class="posts">
     <div class="row post" *ngFor="let o_post of a_posts">
-        <div class="post__content">
-            <div *ngIf="o_post.picture" class="col s6 post__picture" [style.background-image]="o_post.picture"></div>
-            <div [ngClass]="{'s6': o_post.picture, 's12': !o_post.picture}" class="col post__info">
+        <a href="posts/{{o_post.idPost}}" class="post__content">
+            <div class="col s12 post__info">
+                <div class="post__nb__message">
+                    <i class="fa fa-comments-o"></i> {{o_post.nbComments}}
+                </div>
                 <div class="post__profil">
                     <div class="post__profil__picture profil_picture" [style.background-image]="o_post.profil_picture"></div>
                     <p class="post__profil__name">{{o_post.username}} {{o_post.name}}</p>
                     <p class="post__date">{{o_post.date | date: 'dd/MM/yyyy à HH:mm'}}</p>
                 </div>
+                <h3 class="post__title">
+                    {{o_post.title}}
+                </h3>
+                <p class="post__content">
+                    {{o_post.content}}
+                </p>
+            </div>
+        </a>
+    </div>
+</section>
+<ng-template #post>
+    <section *ngIf="o_post; else error" class="post">
+        <div class="row post__content main_post">
+            <div class="col s12 post__info">
+                <div class="post__profil">
+                    <div class="post__profil__picture profil_picture" [style.background-image]="o_post.profil_picture"></div>
+                    <p class="post__profil__name">{{o_post.username}} {{o_post.name}}</p>
+                    <p class="post__date">{{o_post.date | date: 'dd/MM/yyyy à HH:mm'}}</p>
+                </div>
+                <h3 class="post__title">
+                    {{o_post.title}}
+                </h3>
                 <p class="post__resume">
                     {{o_post.content}}
                 </p>
-                <ul class="post__tags">
-                    <li class="post__tag tag" *ngFor="let s_tag of o_post.tags">{{s_tag}}</li>
-                </ul>
             </div>
         </div>
-        <div class="post__actions">
-            <div class="post__action__comment">
-                <form>
-                    <textarea name="post_comment" placeholder="Écrire un commentaire"></textarea>
-                    <button type="submit"><i class="fa fa-send-o"></i></button>
-                </form>
-            </div>
-            <div class="post__action__like">
-                <div [ngClass]="{'active': o_post.like}" class="button_like"></div>
-            </div>
-        </div>
-    </div>
-</section>
+        <ul *ngIf="a_comments?.length > 0" class="post__comments">
+    		<h3 class="post__comments__title">Réponses</h3>
+    		<li *ngFor="let o_comment of a_comments" class="post__comment">
+    			<div class="post__comment__picture profil_picture" [style.background-image]="o_comment.s_user_picture"></div>
+    			<p *ngIf="o_comment.user" class="post__comment__name">{{o_comment.user.username}} {{o_comment.user.name}}</p>
+    			<p class="post__comment__date">{{o_comment.date | date: 'dd/MM/yyyy à HH:mm'}}</p>
+    			<p class="post__comment__content">{{o_comment.content}}</p>
+    		</li>
+    	</ul>
+        <div class="post__action__comment">
+			<form #commentForm="ngForm" (ngSubmit)="addComment(commentForm, o_post.idPost)">
+				<textarea name="post__comment" placeholder="Écrire un commentaire" ngModel [(ngModel)]="s_textarea"></textarea>
+				<button type="submit"><i class="fa fa-send-o"></i></button>
+			</form>
+		</div>
+    </section>
+</ng-template>

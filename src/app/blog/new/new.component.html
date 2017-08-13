@@ -18,13 +18,13 @@
 	<div [innerHTML]="o_new.s_content"></div>
 	<div class="new__actions">
 		<div class="new__action__comment">
-			<form>
-				<textarea name="new_comment" placeholder="Écrire un commentaire"></textarea>
+			<form #commentForm="ngForm" (ngSubmit)="addComment(commentForm, o_new.idNew)">
+				<textarea name="new__comment" placeholder="Écrire un commentaire" ngModel [(ngModel)]="s_textarea"></textarea>
 				<button type="submit"><i class="fa fa-send-o"></i></button>
 			</form>
 		</div>
 		<div class="new__action__like">
-			<div class="button_like"></div>
+			<div [ngClass]="{'active': o_new.like}" class="button_like" (click)="addLike(o_new.idNew)"></div>
 		</div>
 	</div>
 	<ul *ngIf="a_comments?.length > 0" class="new__comments">

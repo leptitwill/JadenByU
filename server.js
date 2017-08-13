@@ -15,11 +15,11 @@ const album   = require('./server/routes/album');
 
 const app = express();
 
-// Parsers for POST data
+// Parsers pour POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Point static path to dist
+// Chemin vers le dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Routes
@@ -30,24 +30,24 @@ app.use('/api/friends', friends);
 app.use('/api/chat', chat);
 app.use('/api/album', album);
 
-// Catch all other routes and return the index file
+// Appel toutes les autres routes et retourne l'index.html
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 /**
-* Get port from environment and store in Express.
+* Récupère le port de l'environnement et le stocke dans Express.
 */
 const port = process.env.PORT || '3000';
 app.set('port', port);
 
 /**
-* Create HTTP server.
+* Créer HTTP server.
 */
 const server = http.createServer(app);
 
 /**
-* Connect to MySQL on start
+* Connexion à MySQL
 */
 db.connect(db, function(err) {
 	if (err) {

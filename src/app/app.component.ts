@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router }    from '@angular/router';
 
 import { AuthService }   from './auth/auth.service';
 import { GlobalService } from './global.service';
@@ -12,8 +12,6 @@ import { GlobalService } from './global.service';
 })
 
 export class AppComponent {
-	// Affiche le header si l'utilisateur est connecté
-	b_is_logged: boolean = localStorage.getItem("user") ? true : false ;
 	// Constructeur
 	constructor(private _router: Router, private _service:AuthService, public _global:GlobalService) {
 		// A chaque changement de route
@@ -36,6 +34,8 @@ export class AppComponent {
 	logout() {
 		this._service.logout();
 	}
+	// Vérifie si l'utilisateur est connecté
+	b_is_logged: boolean = localStorage.getItem("user") ? true : false ;
 	// Photo de profil
-	s_user_picture = this._global.s_user_picture;
+	s_user_picture: string = this._global.s_user_picture;
 ;}

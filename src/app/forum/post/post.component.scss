@@ -13,20 +13,31 @@
     }
 }
 
-.post__content {
-    width: 100%;
-    background: white;
-    border-bottom: 1px solid $light-grey;
-    display: flex;
+.post__title {
+    margin-top: 1rem;
+    color: $primary-color;
 }
 
-.post__picture {
-    background-position: center;
-    background-size: cover;
+.post__content {
+    width: 100%;
+    color: $deep-black;
+
+    &.main_post {
+        border-bottom: 1px solid $light-grey;
+        border-top: 1px solid $light-grey;
+    }
 }
 
 .post__info {
     padding: 1rem;
+    position: relative;
+}
+
+.post__nb__message {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: $deep-grey;
 }
 
 .post__profil__picture {
@@ -44,7 +55,7 @@
 }
 
 .post__resume {
-    margin: 1rem 0;
+    margin-top: 1rem;
 }
 
 .post__actions {
@@ -86,4 +97,68 @@
 
 #error {
     padding: 1rem;
+}
+
+
+.post__action__comment {
+    width : 100%;
+    border-bottom: 1px solid $light-grey;
+
+    form {
+        textarea {
+            width  : calc(100% - 50px);
+            height : 50px;
+            float  : left;
+            resize : none;
+        }
+
+        button {
+            width       : 50px;
+            float       : left;
+            padding-top : 2px;
+            color       : $tertiary-color;
+            background  : transparent;
+            line-height : 48px;
+            cursor      : pointer;
+
+            &:hover {
+                color : $primary-color;
+            }
+        }
+    }
+}
+
+
+.post__comments__title {
+    margin     : 0;
+    padding    : 1rem;
+    color      : white;
+    background : $primary-color;
+    text-align : center;
+}
+
+.post__comment {
+    padding    : 1rem;
+    border-bottom: 1px solid $light-grey;
+}
+
+.post__comment__picture {
+    width        : 30px;
+    height       : 30px;
+    float        : left;
+    margin-right : 0.5rem;
+}
+
+.post__comment__date,
+.post__comment__name {
+    line-height : 15px;
+}
+
+.post__comment__date {
+    color     : $grey;
+    font-size : 0.8rem;
+}
+
+.post__comment__content {
+    margin-top : 1rem;
 }

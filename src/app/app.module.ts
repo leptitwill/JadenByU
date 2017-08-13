@@ -34,6 +34,7 @@ const appRoutes: Routes = [
 	{ path: 'chat/:id', component: ChatComponent, canActivate: [AuthService] },
 	{ path: 'news', component: NewComponent, canActivate: [AuthService] },
 	{ path: 'news/:id', component: NewComponent, canActivate: [AuthService] },
+	{ path: 'posts/:id', component: PostComponent, canActivate: [AuthService] },
 	{ path: 'search', component: SearchComponent, canActivate: [AuthService] },
 	{ path: '**', redirectTo: '' }
 ];

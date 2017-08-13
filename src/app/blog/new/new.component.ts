@@ -1,5 +1,5 @@
 import { Component }    from '@angular/core';
-import { Http }         from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import 'rxjs/Rx';
@@ -16,12 +16,12 @@ import { GlobalService } from '../../global.service';
 export class NewComponent {
 	// Récupère toutes les actualités
 	getAllNews() {
-		return this.http.get('/api/news/get').map(res => res.json());
+		return this.http.get('/api/news/get/' + this._global.o_user.idUser).map(res => res.json());
 	}
 
 	// Récupère une actualité
 	getNew(i_id_new) {
-		return this.http.get('/api/news/get/' + i_id_new).map(res => res.json());
+		return this.http.get('/api/news/get/' + i_id_new + '/' + this._global.o_user.idUser).map(res => res.json());
 	}
 	// Récupère les vues d'une actualité
 	getNbViews(i_id_new) {
@@ -45,6 +45,36 @@ export class NewComponent {
 			}
 		});
 	}
+	// Ajoute un like
+	addLike(i_id_new) {
+		if(!this.o_new.like){
+			this.http.request('/api/news/add-like/' + i_id_new + '/' + this._global.o_user.idUser).subscribe(
+				res => {
+					this.o_new.like = 1;
+				}
+			);
+		}
+	}
+	// Ajoute une vue
+	addView(i_id_new) {
+		if(!this.o_new.view){
+			this.http.request('/api/news/add-view/' + i_id_new + '/' + this._global.o_user.idUser).subscribe();
+		}
+	}
+	// Envoie un commentaire
+	addComment(o_comment, i_id_new) {
+		let data = new URLSearchParams();
+			data.append('i_id_new', i_id_new);
+			data.append('i_id_user', this._global.o_user.idUser);
+			data.append('s_comment', o_comment.value.new__comment);
+
+		this.http.post('/api/news/add-comment', data)
+		.subscribe(res => {
+			// Vide le textarea
+			this.s_textarea = '';
+			this.getComments(i_id_new);
+		});
+	}
 	// Constructeur
 	constructor(private http: Http, private sanitizer: DomSanitizer, private _global:GlobalService, private _route:ActivatedRoute) {
 		// Récupère l'id de l'actulaité
@@ -62,6 +92,8 @@ export class NewComponent {
 					// On les stocks dans un tableau
 					this.o_new.tags = this.o_new.tags.split(',');
 				}
+				// Ajoute une vue
+				this.addView(this.i_id_new);
 			});
 			// Récupère le nb de vues
 			this.getNbViews(this.i_id_new)
@@ -111,4 +143,6 @@ export class NewComponent {
 	i_id_new : number;
 	// Commentaires
 	a_comments : any;
+	// Contenu du textarea
+	s_textarea :string;
 }
