@@ -44,7 +44,7 @@
             </div>
         </div>
         <ul *ngIf="a_comments?.length > 0" class="post__comments">
-    		<h3 class="post__comments__title">Réponses</h3>
+    		<h3 class="post__comments__title">Réponses des jadeners</h3>
     		<li *ngFor="let o_comment of a_comments" class="post__comment">
     			<div class="post__comment__picture profil_picture" [style.background-image]="o_comment.s_user_picture"></div>
     			<p *ngIf="o_comment.user" class="post__comment__name">{{o_comment.user.username}} {{o_comment.user.name}}</p>

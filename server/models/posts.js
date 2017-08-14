@@ -6,7 +6,7 @@ exports.getAll = function(result) {
 		FROM posts
 		INNER JOIN users ON posts.idUser = users.idUser`;
 	if (this.b_user) {
-		s_query += `WHERE posts.idUser = '`+this.i_id_user+`'`;
+		s_query += ` WHERE posts.idUser = '`+this.i_id_user+`'`;
 	}
 	s_query += `
 		GROUP BY posts.idPost
